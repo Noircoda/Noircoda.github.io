@@ -1,37 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>KOPPEE - Coffee Shop HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="A-state-coffee" name="keywords">
-    <meta content="A-state-coffee" name="description">
+    <head>
+        <meta charset="utf-8">
+        <title>A咖· 啡 |評論</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="A-state-coffee" name="keywords">
+        <meta content="A-state-coffee" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
-</head>
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/style.min.css" rel="stylesheet">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+        
+            // https://developers.google.com/chart/interactive/docs/quick_start
+            // Load the Visualization API and the corechart package.
+            google.charts.load('current', {'packages':['corechart']});
+        
+            // Set a callback to run when the Google Visualization API is loaded.	
+            google.charts.setOnLoadCallback(init);
+        
+            function init() {
+            // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
+            // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
+            // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
+            // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
+            var url ='https://docs.google.com/spreadsheets/d/1wUixB2zNCXj4xaB1-8-DikYOVwNKIwEMXgudQz7g_AE/gviz/tq?sheet=表單回應1';
+            var query = new google.visualization.Query(url);
+            query.setQuery('select *');
+            query.send(processSheetsData);
+            }	
+            
+            function processSheetsData(response) {
+                data = response.getDataTable();
+                columns = data.getNumberOfColumns();
+                rows = data.getNumberOfRows();
+        
+                n1 = data.getFormattedValue(rows,1);
+                s1 = data.getFormattedValue(rows,3);
+                c1 = data.getFormattedValue(rows,4);
+
+                n2 = data.getFormattedValue(rows-1,1);
+                s2 = data.getFormattedValue(rows-1,3);
+                c2 = data.getFormattedValue(rows-1,4);
+
+                n3 = data.getFormattedValue(rows-2,1);
+                s3 = data.getFormattedValue(rows-2,3);
+                c3 = data.getFormattedValue(rows-2,4);
+
+                n4 = data.getFormattedValue(rows-3,1);
+                s4 = data.getFormattedValue(rows-3,3);
+                c4 = data.getFormattedValue(rows-3,4);
+
+                document.getElementById('n1').innerHTML = n1;
+                document.getElementById('n2').innerHTML = n2; 
+                document.getElementById('n3').innerHTML = n3; 
+                document.getElementById('n4').innerHTML = n4;
+                    
+                document.getElementById('s1').innerHTML = s1;
+                document.getElementById('s2').innerHTML = s2; 
+                document.getElementById('s3').innerHTML = s3; 
+                document.getElementById('s4').innerHTML = s4;
+
+                document.getElementById('c1').innerHTML = c1;
+                document.getElementById('c2').innerHTML = c2; 
+                document.getElementById('c3').innerHTML = c3; 
+                document.getElementById('c4').innerHTML = c4;}
+            
+        </script>	
+        
+    </head>
 
 <body>
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.html" class="navbar-brand px-lg-4 m-0">
-                <h1 class="m-0 display-4 text-uppercase text-white">KOPPEE</h1>
+                <h1 class="m-0 display-4 text-uppercase text-white">A咖· 啡</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -46,7 +105,7 @@
                         <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu text-capitalize">
                             <a href="reservation.html" class="dropdown-item">Reservation</a>
-                            <a href="testimonial.html" class="dropdown-item active">Testimonial</a>
+                            <a href="testimonial.html" class="dropdown-item active">Comment</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -60,11 +119,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Testimonial</h1>
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Comment</h1>
             <div class="d-inline-flex mb-lg-5">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Testimonial</p>
+                <p class="m-0 text-white">Comment</p>
             </div>
         </div>
     </div>
@@ -75,7 +134,7 @@
     <div class="container-fluid py-5">
         <div class="container">
             <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h4>
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Comment</h4>
                 <h1 class="display-4">Our Clients Say</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
@@ -83,41 +142,41 @@
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid" src="img/testimonial-1.jpg" alt="">
                         <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
+                            <h4 id='n4'></h4>
+                            <i id='s4'></i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0" id='c4'></p>
                 </div>
                 <div class="testimonial-item">
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid" src="img/testimonial-2.jpg" alt="">
                         <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
+                            <h4 id='n3'></h4>
+                            <i id='s3'></i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0" id='c3'></p>
                 </div>
                 <div class="testimonial-item">
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid" src="img/testimonial-3.jpg" alt="">
                         <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
+                            <h4 id='n2'></h4>
+                            <i id='s2'></i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0" id='c2'></p>
                 </div>
                 <div class="testimonial-item">
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid" src="img/testimonial-4.jpg" alt="">
                         <div class="ml-3">
-                            <h4>Client Name</h4>
-                            <i>Profession</i>
+                            <h4 id='n1'></h4>
+                            <i id='s1'></i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0" id='c1'></p>
                 </div>
             </div>
         </div>
