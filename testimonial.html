@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
     <head>
         <meta charset="utf-8">
@@ -8,83 +8,27 @@
         <meta content="A-state-coffee" name="keywords">
         <meta content="A-state-coffee" name="description">
 
-        <!-- Favicon -->
+        <!-- Favicon 網站圖示-->
         <link href="img/favicon.ico" rel="icon">
 
-        <!-- Google Font -->
+        <!-- Google Font 字體-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
-        <!-- Font Awesome -->
+        <!-- Font Awesome (因為用bootstrap4還沒有icon)-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
+            <!--圖片輪播 jQuery-->
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+            <!--bootstrap 4-->
         <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.min.css" rel="stylesheet">
 
         <script src="https://www.gstatic.com/charts/loader.js"></script>
-        
-        <script>
-        
-            // https://developers.google.com/chart/interactive/docs/quick_start
-            // Load the Visualization API and the corechart package.
-            google.charts.load('current', {'packages':['corechart']});
-        
-            // Set a callback to run when the Google Visualization API is loaded.	
-            google.charts.setOnLoadCallback(init);
-        
-            function init() {
-            // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
-            // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
-            // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
-            // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
-            url ='https://docs.google.com/spreadsheets/d/1wUixB2zNCXj4xaB1-8-DikYOVwNKIwEMXgudQz7g_AE/gviz/tq?sheet=表單回應1';
-            query = new google.visualization.Query(url);
-            query.setQuery('select *');
-            query.send(processSheetsData);
-            }	
-            
-            function processSheetsData(response) {
-                data = response.getDataTable();
-                columns = data.getNumberOfColumns();
-                rows = data.getNumberOfRows();
-        
-                n1 = data.getFormattedValue(rows,1);
-                s1 = data.getFormattedValue(rows,3);
-                c1 = data.getFormattedValue(rows,4);
-
-                n2 = data.getFormattedValue(rows-1,1);
-                s2 = data.getFormattedValue(rows-1,3);
-                c2 = data.getFormattedValue(rows-1,4);
-
-                n3 = data.getFormattedValue(rows-2,1);
-                s3 = data.getFormattedValue(rows-2,3);
-                c3 = data.getFormattedValue(rows-2,4);
-
-                n4 = data.getFormattedValue(rows-3,1);
-                s4 = data.getFormattedValue(rows-3,3);
-                c4 = data.getFormattedValue(rows-3,4);
-
-                document.getElementById('n1').innerHTML = n1;
-                document.getElementById('n2').innerHTML = n2; 
-                document.getElementById('n3').innerHTML = n3; 
-                document.getElementById('n4').innerHTML = n4;
-                        
-                document.getElementById('s1').innerHTML = s1;
-                document.getElementById('s2').innerHTML = s2; 
-                document.getElementById('s3').innerHTML = s3; 
-                document.getElementById('s4').innerHTML = s4;
-
-                document.getElementById('c1').innerHTML = c1;
-                document.getElementById('c2').innerHTML = c2; 
-                document.getElementById('c3').innerHTML = c3; 
-                document.getElementById('c4').innerHTML = c4;}
-            
-            console.log(n1);
-        </script>	
+    
         
     </head>
 
@@ -175,7 +119,7 @@
                     <div class="d-flex align-items-center mb-3">
                         <img class="img-fluid" src="img/testimonial-4.jpg" alt="">
                         <div class="ml-3">
-                            <h4 id='n1'></h4>
+                            <h4><span id='n1'></span></h4>
                             <i id='s1'></i>
                         </div>
                     </div>
@@ -253,6 +197,65 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        
+        // https://developers.google.com/chart/interactive/docs/quick_start
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+    
+        // Set a callback to run when the Google Visualization API is loaded.	
+        google.charts.setOnLoadCallback(init);
+    
+        function init() {
+        // 這個例子使用的試算表是 https://docs.google.com/spreadsheets/d/1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk/copy
+        // 將上述試算表另存副本後，你要在自己的雲端硬碟將該試算表設定成[知道連結的使用者都能查看]。
+        // 然後讓程式讀取 https://docs.google.com/spreadsheets/d/瀏覽器網址列上的網址擷取序號部分/gviz/tq?sheet=工作表名稱
+        // 也就是將下列的 1QScI5d56Kh-LGywY4WR6EvRGPcalFQYUAdqMxbFVDvk 更換成自己的檔案序號，以及最後部分指讀取哪個工作表。
+        url ='https://docs.google.com/spreadsheets/d/1wUixB2zNCXj4xaB1-8-DikYOVwNKIwEMXgudQz7g_AE/gviz/tq?sheet=表單回應1';
+        query = new google.visualization.Query(url);
+        query.setQuery('select *');
+        query.send(processSheetsData);
+        }	
+        
+        function processSheetsData(response) {
+            data = response.getDataTable();
+            columns = data.getNumberOfColumns();
+            rows = data.getNumberOfRows();
+    
+            n1 = data.getFormattedValue(rows-1,1);
+            s1 = data.getFormattedValue(rows-1,3);
+            c1 = data.getFormattedValue(rows-1,4);
+
+            n2 = data.getFormattedValue(rows-2,1);
+            s2 = data.getFormattedValue(rows-2,3);
+            c2 = data.getFormattedValue(rows-2,4);
+
+            n3 = data.getFormattedValue(rows-3,1);
+            s3 = data.getFormattedValue(rows-3,3);
+            c3 = data.getFormattedValue(rows-3,4);
+
+            n4 = data.getFormattedValue(rows-4,1);
+            s4 = data.getFormattedValue(rows-4,3);
+            c4 = data.getFormattedValue(rows-4,4); }
+
+            document.getElementById('n1').textContent = n1;
+            document.getElementById('n2').textContent = n2; 
+            document.getElementById('n3').textContent = n3; 
+            document.getElementById('n4').textContent = n4;
+                    
+            document.getElementById('s1').textContent = s1;
+            document.getElementById('s2').textContent = s2; 
+            document.getElementById('s3').textContent = s3; 
+            document.getElementById('s4').textContent = s4;
+
+            document.getElementById('c1').textContent = c1;
+            document.getElementById('c2').textContent = c2; 
+            document.getElementById('c3').textContent = c3; 
+            document.getElementById('c4').textContent = c4;
+       
+        
+        
+    </script>	
 </body>
 
 </html>
